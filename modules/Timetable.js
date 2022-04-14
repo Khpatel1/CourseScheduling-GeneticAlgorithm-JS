@@ -39,7 +39,7 @@ module.exports = class Timetable {
     let roomArr = [Room];
     roomArr = this.getRoomsAsArray;
     for (let i = 0; i < roomArr.length; i++) {
-      console.log(roomArr[i].roomStr);
+      roomArr[i].roomStr();
     }
   }
 

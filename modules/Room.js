@@ -1,14 +1,21 @@
 // used to store room capastity
 
 module.exports = class Room {
-  roomId;
-  roomNumber;
-  capacity;
+  roomId = 0;
+  roomNumber = 0;
+  capacity = 0;
 
-  constructor(roomId, roomNumber, capacity) {
-    this.roomId = roomId;
-    this.roomNumber = roomNumber;
-    this.capacity = capacity;
+  constructor(type, obj1, roomNumber, capacity) {
+    if (type == 'INIT') {
+      this.roomId = obj1;
+      this.roomNumber = roomNumber;
+      this.capacity = capacity;
+    }
+    if (type == 'CLONE') {
+      this.roomId = obj1.getRoomId;
+      this.roomNumber = obj1.getRoomNumber();
+      this.capacity = obj1.getRoomCapacity();
+    }
   }
 
   getRoomId() {
@@ -24,6 +31,10 @@ module.exports = class Room {
   }
 
   roomStr() {
-    return this.roomId + ' ' + this.roomNumber + ' ' + this.capacity;
+    console.log(
+      'Room ID: ',
+      this.roomId + ', Room number: ',
+      this.roomNumber + ', Room capacity: ' + this.capacity
+    );
   }
 };
